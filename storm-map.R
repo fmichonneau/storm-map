@@ -3,6 +3,7 @@
 #' ---
 
 library(rnaturalearth)
+library(rnaturalearthdata)
 library(sf)
 
 # Get world countries (filled polygons instead of just coastlines)
