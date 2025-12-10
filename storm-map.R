@@ -1,5 +1,10 @@
 #' ---
-#' title: "Storm mapping with rnaturalearth and sf"
+#' title: "Storm mapping with `rnaturalearth` and `sf`"
+#' format:
+#'   html:
+#'    code-fold: true
+#'    execute:
+#'      warning: false
 #' ---
 
 library(rnaturalearth)
@@ -10,9 +15,12 @@ library(sf)
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
 # Read storms data
-storms <- st_read(system.file("shape/storms_xyz.shp", package = "sf"))
+storms <- st_read(
+  system.file("shape/storms_xyz.shp", package = "sf"),
+  quiet = TRUE
+)
 
-# Create the map with blue ocean and peachpuff filled continents
+# Create the map
 plot(
   st_geometry(world),
   col = "peachpuff",
@@ -26,7 +34,7 @@ plot(
   axes = TRUE,
   graticule = TRUE,
   bg = "#87CEEB"
-) # light blue for ocean
+)
 
 # Add storm tracks on top
 plot(
